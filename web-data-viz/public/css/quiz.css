@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: whitesmoke;
+    color: rgb(90, 90, 90);
+}
+
+:root {
+    --tamanho-header: 110px;
+    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-footer: 60px;
+    --cor-principal: rgb(38, 127, 252);
+    --cor-secundaria: rgb(90, 90, 90);
+    --cor-fundo: whitesmoke;
+    --cor-footer: rgb(38, 127, 252);
+    --cor-texto-footer: #fff;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+/* HEADER */
+
+.header {
+    background-color: var(--cor-fundo);
+    border-bottom: 2px solid var(--cor-principal);
+    padding: 10px 0;
+    /* Ajuste o padding para uniformidade */
+    text-align: center;
+    height: var(--tamanho-header);
+    /* Utilize a variável global */
+    display: flex;
+    flex-direction: column;
+    /* Organiza o conteúdo verticalmente */
+    align-items: center;
+    /* Centraliza os elementos horizontalmente */
+    justify-content: center;
+    /* Centraliza os elementos verticalmente */
+    /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
+}
+
+.header .container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgTitulo {
+    position: absolute;
+    top: -4%;
+    left: -0.5%;
+    width: 160px;
+    /* Defina um tamanho fixo */
+    height: auto;
+    margin: 0 0 10px 0;
+    /* Adicione espaçamento abaixo do logo */
+}
+
+.titulo {
+    color: var(--cor-principal);
+    font-size: 30px;
+    font-weight: 700;
+    margin: 10px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    /* Espaço entre os itens */
+    margin: 10px;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--cor-secundaria);
+    font-size: 19.5px;
+    font-weight: 600;
+    /* transition: color 0.3s ease; */
+}
+
+.navbar a:hover {
+    color: var(--cor-principal);
+    /* Adicione um efeito de hover */
+    text-decoration: underline;
+}
+
+
+/* FOOTER */
+
+.footer {
+    background-color: var(--cor-footer);
+    height: var(--tamanho-footer);
+    color: white;
+    display: flex;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.footer .container {
+    justify-content: center;
+    text-align: center;
+}
+
+.footer .container .version {
+    font-size: 12px;
+}
+
+#botaoVoltar {
+    display: inline-block;
+    padding: 15px;
+    width: 100px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin: 3px;
+}
+
+#divIniciarQuiz {
+    background-image: url(../assets/imgs/cavalosQuiz.jpg);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    justify-content: flex-end; /* Coloca os itens na parte inferior */
+    height: 400px;
+    width: 700px;
+    margin: 40px;
+    background-size: cover;
+    background-position: center;
+}
+
+#btnIniciarQuiz {
+    background-color: var(--cor-principal); /* Cor de fundo verde */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda padrão */
+    width: 300px;
+    height: auto;
+    padding: 10px 20px; /* Adiciona preenchimento interno */
+    font-size: 1rem; /* Define o tamanho do texto */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor para "pointer" ao passar o mouse */
+    margin-bottom: 20px; /* Ajusta a distância do botão em relação à parte inferior */
+}
+
+
+/* Reset básico para garantir que todos os elementos comecem com estilo uniforme */
+div,
+span,
+input,
+label,
+button {
+    margin: 0;
+    /* Remove margens padrões dos elementos */
+    padding: 0;
+    /* Remove o preenchimento padrão dos elementos */
+    box-sizing: border-box;
+    /* Inclui as bordas e o padding no tamanho total do elemento */
+}
+
+
+
+/* Container principal que agrupa pontuação e o jogo */
+#pontuacaoEJogo {
+    display: flex;
+    /* Define um layout flexível */
+    flex-direction: column;
+    /* Organiza os itens em uma coluna */
+    align-items: center;
+    /* Centraliza os itens no eixo horizontal */
+    gap: 20px;
+    /* Adiciona espaçamento entre os itens */
+}
+
+
+
+
+/* Container de pontuação */
+#pontuacao {
+    display: flex;
+    /* Define um layout flexível */
+    flex-direction: column;
+    /* Organiza os itens em uma coluna */
+    align-items: flex-start;
+    /* Alinha os itens ao início no eixo horizontal */
+    border: 1px solid #ccc;
+    /* Borda cinza clara */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    padding: 10px;
+    /* Espaçamento interno */
+    width: 100%;
+    /* Largura total do container pai */
+    max-width: 300px;
+    /* Limita a largura máxima */
+    background-color: #fff;
+    /* Fundo branco */
+}
+
+/* Estilização dos textos dentro do container de pontuação */
+#pontuacao span {
+    display: inline-block;
+    /* Faz com que o elemento ocupe apenas o espaço necessário */
+    margin-bottom: 5px;
+    /* Espaçamento entre os itens */
+}
+
+/* Container do jogo */
+#jogo {
+    display: flex;
+    /* Define um layout flexível */
+    flex-direction: column;
+    /* Organiza os itens em uma coluna */
+    align-items: flex-start;
+    /* Alinha os itens ao início no eixo horizontal */
+    border: 1px solid #ddd;
+    /* Borda cinza clara */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    padding: 15px;
+    /* Espaçamento interno */
+    width: 100%;
+    /* Largura total do container pai */
+    max-width: 600px;
+    /* Limita a largura máxima */
+    background-color: #fff;
+    /* Fundo branco */
+}
+
+/* Classe genérica para adicionar padding vertical */
+.padding-8 {
+    padding: 8px 0;
+    /* Adiciona espaçamento vertical */
+}
+
+/* Estilização das alternativas */
+#opcoes span {
+    display: flex;
+    /* Layout flexível para alinhar elementos */
+    align-items: center;
+    /* Alinha itens verticalmente ao centro */
+    margin: 5px 0;
+    /* Espaçamento vertical entre as opções */
+}
+
+/* Estilização dos botões de seleção */
+.radio {
+    margin-right: 10px;
+    /* Espaçamento entre o rádio e o texto */
+}
+
+/* Estilização do container dos botões */
+#botoes {
+    display: flex;
+    /* Layout flexível para organizar botões */
+    justify-content: center;
+    /* Centraliza os botões horizontalmente */
+    align-items: center;
+    /* Centraliza os botões verticalmente */
+    gap: 10px;
+    /* Espaçamento entre os botões */
+    margin-top: 20px;
+    /* Espaçamento superior do container */
+}
+
+/* Estilização padrão dos botões */
+button {
+    background-color: #007BFF;
+    /* Fundo azul */
+    color: white;
+    /* Texto branco */
+    border: none;
+    /* Remove a borda padrão */
+    padding: 10px 15px;
+    /* Adiciona preenchimento interno */
+    font-size: 1rem;
+    /* Tamanho do texto */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    cursor: pointer;
+    /* Muda o cursor para "pointer" ao passar o mouse */
+    transition: background-color 0.3s ease;
+    /* Transição suave para mudanças de cor */
+}
+
+/* Estilização para botões desativados */
+button:disabled {
+    background-color: #ccc;
+    /* Cor de fundo cinza */
+    cursor: not-allowed;
+    /* Cursor padrão para itens desativados */
+}
+
+/* Alteração da cor do botão ao passar o mouse */
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+    /* Tom mais escuro de azul */
+}
+
+/* Classes para feedback de cores */
+.text-success-with-bg {
+    color: white;
+    /* Texto branco */
+    background-color: #4CAF50;
+    /* Fundo verde */
+    padding: 2px 6px;
+    /* Espaçamento interno */
+    border-radius: 3px;
+    /* Bordas arredondadas */
+    font-weight: bold;
+    /* Texto em negrito */
+}
+
+.text-danger-with-bg {
+    color: white;
+    /* Texto branco */
+    background-color: #FF6347;
+    /* Fundo vermelho */
+    padding: 2px 6px;
+    /* Espaçamento interno */
+    border-radius: 3px;
+    /* Bordas arredondadas */
+    font-weight: bold;
+    /* Texto em negrito */
+}
+
+.text-warning-with-bg {
+    color: #856404;
+    /* Texto amarelo escuro */
+    background-color: #fff3cd;
+    /* Fundo amarelo claro */
+    padding: 2px 6px;
+    /* Espaçamento interno */
+    border-radius: 3px;
+    /* Bordas arredondadas */
+    font-weight: bold;
+    /* Texto em negrito */
+}
+
+/* Estilização para a mensagem final */
+#msgFinal {
+    font-size: 1.2rem;
+    /* Tamanho do texto maior */
+    text-align: center;
+    /* Centraliza o texto */
+    margin-top: 10px;
+    /* Espaçamento superior */
+}
+
+/* Ajustes para largura de elementos */
+.width-fit-content {
+    display: inline-block;
+    /* Ocupa apenas o espaço necessário */
+    width: fit-content;
+    /* Largura baseada no conteúdo interno */
+}

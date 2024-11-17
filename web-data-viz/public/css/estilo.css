@@ -44,7 +44,6 @@ body {
   /* Centraliza os elementos horizontalmente */
   justify-content: center;
   /* Centraliza os elementos verticalmente */
-  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
 }
 
 .header .container {
@@ -57,7 +56,6 @@ body {
   top: -4%;
   left: -0.5%;
   width: 160px;
-  /* Defina um tamanho fixo */
   height: auto;
   margin: 0 0 10px 0;
   /* Adicione espaçamento abaixo do logo */
@@ -109,7 +107,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
   padding: 20px;
   text-align: center;
 }
@@ -535,6 +532,7 @@ input {
   max-width: 450px;
   border-radius: 8px;
 }
+
 
 /* SIMULADOR */
 
