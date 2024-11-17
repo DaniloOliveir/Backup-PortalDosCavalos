@@ -269,7 +269,7 @@ body {
 .formulario select {
   border: 2px solid #32b9cd;
   background-color: white;
-  color: yellow;
+  color: red;
   height: 36px;
   text-align: center;
   border-radius: 10px;
@@ -424,7 +424,7 @@ input {
 
 /* Cor ao passar o mouse */
 .raca h3 a:hover {
-  color: yellow;
+  color: var(--cor-principal);
   /* Cor desejada ao passar o mouse */
   text-decoration: underline;
   /* Opcional */
@@ -494,6 +494,46 @@ input {
 .mainCuriosidades p {
   line-height: 1.5;
   text-indent: 20px;
+}
+
+.containerImgCuriosidades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+}
+
+.imgCuriosidades {
+  height: 100%;
+  width: auto;
+  max-width: 380px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* SOBRE MIM */
+
+.mainSobreMim {
+  max-width: 900px;
+  margin: 23px auto;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.containerImgSobre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+}
+
+.imgSobreMim {
+  height: 100%;
+  width: auto;
+  max-width: 450px;
+  border-radius: 8px;
 }
 
 /* SIMULADOR */
