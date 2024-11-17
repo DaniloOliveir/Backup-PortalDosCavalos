@@ -1,2 +1,2 @@
-# Backup-PortalDosCavalos
-Esse é um backup privado para não correr riscos de terceiros alterarem meus arquivos
+# Portal dos Cavalos
+Esse projeto traz como objetivo apresentar tudo sobre cavalos e suas raças.
