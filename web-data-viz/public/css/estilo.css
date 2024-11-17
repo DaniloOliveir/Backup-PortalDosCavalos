@@ -156,7 +156,6 @@ body {
   align-items: center;
 }
 
-/* Utilzar depois para colocar foto minha 'SObre mim' */
 .box img {
   width: 170px;
 }
@@ -519,6 +518,12 @@ input {
   border-radius: 8px;
 }
 
+.mainSobreMim p {
+  font-size: 20px;
+  text-indent: 1em;
+  text-align: justify;
+
+}
 .containerImgSobre {
   display: flex;
   justify-content: center;
