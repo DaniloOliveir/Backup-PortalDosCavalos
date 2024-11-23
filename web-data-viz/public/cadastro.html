@@ -103,24 +103,79 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    // var codigoVar = codigo_input.value;
-    // var idEmpresaVincular
+
+    var tamanho_nome = nomeVar.length;
+    var caracteres_especias_nome = nomeVar.includes('!') || nomeVar.includes('@') ||nomeVar.includes('#') ||nomeVar.includes('$') ||nomeVar.includes('%') ||nomeVar.includes('&') ||nomeVar.includes('*') ;
+
+    var caracteres_especias_senha = senhaVar.includes('!') || senhaVar.includes('@') ||senhaVar.includes('#') ||senhaVar.includes('$') ||senhaVar.includes('%') ||senhaVar.includes('&') ||senhaVar.includes('*');
+
+    var email_tem = emailVar.includes('@');
+    var termina_email = emailVar.endsWith('.com') || emailVar.endsWith('.com.br');
+    var tamanho_senha = senhaVar.length;
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" 
-      // || codigoVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      alert('Erro! Todos os campos devem ser preenchidos!')
 
       finalizarAguardar();
       return false;
-    } else {
+    }
+    else if (tamanho_nome <= 2) {
+      cardErro.style.display = "block";
+      alert('Erro! O campo nome precisa de ao menos 3 letras!')
+
+      finalizarAguardar();
+      return false;
+    }
+    else if (caracteres_especias_nome) {
+      cardErro.style.display = "block";
+      alert('Erro! O campo nome não deve possuir caracteres especias!')
+
+      finalizarAguardar();
+      return false;
+    }
+    else if ( email_tem == false) {
+      cardErro.style.display = "block";
+      alert('Erro! O campo e-mail deve possuir um "@"!')
+
+      finalizarAguardar();
+      return false;
+    }
+    else if ( termina_email == false) {
+      cardErro.style.display = "block";
+      alert('Erro! O campo e-mail deve terminar com ".com" ou ".com.br"!')
+
+      finalizarAguardar();
+      return false;
+    }
+    else if (tamanho_senha <= 5) {
+      cardErro.style.display = "block";
+      alert('Erro! A senha deve conter ao menos 6 caracteres!')
+
+      finalizarAguardar();
+      return false;
+    }
+    else if (caracteres_especias_senha == false) {
+      cardErro.style.display = "block";
+      alert('Erro! A senha deve conter ao menos 1 caractere especial!')
+
+      finalizarAguardar();
+      return false;
+    }
+    else if (senhaVar != confirmacaoSenhaVar) {
+      cardErro.style.display = "block";
+      alert('Erro! As senhas não coincidem!')
+
+      finalizarAguardar();
+      return false;
+    }
+    else {
       setInterval(sumirMensagem, 5000);
     }
 

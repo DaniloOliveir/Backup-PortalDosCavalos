@@ -1,11 +1,4 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
+-- drop database portalDosCavalos;
 CREATE DATABASE portalDosCavalos;
 USE portalDosCavalos;
 
@@ -30,8 +23,15 @@ CONSTRAINT fkUsuarioHistorico
 INSERT INTO usuario VALUES
 (default, 'Danilo Oliveira','danilo.oliveira@gmail.com', '123456');
 
-INSERT INTO historicoQuiz (fkUsuario, dtJogo, acertos, erros) VALUES
-(1, '2024-10-08', 5, 3);
+INSERT INTO historicoQuiz VALUES
+(1, 1, '2024-10-08', 5, 3);
+
 
 SELECT * FROM usuario;
+
 SELECT * FROM historicoQuiz;
+
+SELECT * 
+FROM usuario
+JOIN historicoQuiz
+ON idUsuario = fkUsuario;

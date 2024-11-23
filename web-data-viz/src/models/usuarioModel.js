@@ -23,7 +23,17 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function resultadoQuiz(fkUsuario, acertos, erros) {
+    var instrucaoSql = `
+    insert into historicoQuiz (fkUsuario, dtJogo, acertos, erros) values
+	(${fkUsuario}, current_timestamp(), ${acertos}, ${erros});
+    `;
+
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    resultadoQuiz
 };
