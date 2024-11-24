@@ -16,6 +16,8 @@ body {
   --tamanho-footer: 60px;
   --cor-principal: rgb(38, 127, 252);
   --cor-secundaria: rgb(90, 90, 90);
+  --cor-terciaria: #1565c0;
+  --cor-quatro: #0d47a1;
   --cor-fundo: whitesmoke;
   --cor-footer: rgb(38, 127, 252);
   --cor-texto-footer: #fff;
@@ -33,17 +35,12 @@ body {
   background-color: var(--cor-fundo);
   border-bottom: 2px solid var(--cor-principal);
   padding: 10px 0;
-  /* Ajuste o padding para uniformidade */
   text-align: center;
   height: var(--tamanho-header);
-  /* Utilize a variável global */
   display: flex;
   flex-direction: column;
-  /* Organiza o conteúdo verticalmente */
   align-items: center;
-  /* Centraliza os elementos horizontalmente */
   justify-content: center;
-  /* Centraliza os elementos verticalmente */
 }
 
 .header .container {
@@ -58,7 +55,6 @@ body {
   width: 160px;
   height: auto;
   margin: 0 0 10px 0;
-  /* Adicione espaçamento abaixo do logo */
 }
 
 .titulo {
@@ -73,7 +69,6 @@ body {
   justify-content: center;
   align-items: center;
   gap: 35px;
-  /* Espaço entre os itens */
   margin: 10px;
   padding: 0;
 }
@@ -87,12 +82,10 @@ body {
   color: var(--cor-secundaria);
   font-size: 19.5px;
   font-weight: 600;
-  /* transition: color 0.3s ease; */
 }
 
 .navbar a:hover {
   color: var(--cor-principal);
-  /* Adicione um efeito de hover */
   text-decoration: underline;
 }
 
@@ -197,7 +190,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
   padding: 20px;
   text-align: center;
 }
@@ -388,12 +380,9 @@ input {
 
 .racasContainer {
   display: flex;
-  flex-wrap: wrap;
-  /* Permite quebra de linha */
+  flex-wrap: wrap; /* Permite quebra de linha */
   align-items: center;
-  /* Centraliza os contêineres no centro */
   gap: 15px;
-  /* Espaço entre os contêineres */
   justify-content: center;
 
 }
@@ -410,7 +399,6 @@ input {
   margin: 8px;
 }
 
-/* Remover estilos padrão de links */
 .raca h3 a {
   color: var(--cor-secundaria);
   font-weight: 700;
@@ -421,9 +409,7 @@ input {
 /* Cor ao passar o mouse */
 .raca h3 a:hover {
   color: var(--cor-principal);
-  /* Cor desejada ao passar o mouse */
   text-decoration: underline;
-  /* Opcional */
 }
 
 .raca p {
@@ -524,6 +510,7 @@ input {
   text-align: justify;
 
 }
+
 .containerImgSobre {
   display: flex;
   justify-content: center;
@@ -588,26 +575,4 @@ input {
   background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
   background-size: cover;
   animation-iteration-count: infinite;
-}
-
-@keyframes bell {
-  0% {
-    transform: rotate(25deg)
-  }
-
-  25% {
-    transform: rotate(-25deg)
-  }
-
-  50% {
-    transform: rotate(25deg)
-  }
-
-  75% {
-    transform: rotate(-25deg)
-  }
-
-  100% {
-    transform: rotate(25deg)
-  }
 }
