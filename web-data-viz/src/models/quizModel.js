@@ -10,10 +10,12 @@ function resultadoQuiz(fkUsuario, acertos, erros) {
     return database.executar(instrucaoSql);
 }
 
-function pontos() {
+function pontos(fkUsuario) {
+
+    
     var instrucaoSql = `
-    select * from historicoQuiz
-    order by dtJogo;
+   select * from historicoQuiz
+    where fkUsuario = ${fkUsuario};
     `;
 
     console.log('Estou na função pontos')

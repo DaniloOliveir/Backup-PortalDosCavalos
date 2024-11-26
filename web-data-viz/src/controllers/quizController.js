@@ -25,9 +25,10 @@ function resultadoQuiz(req, res) {
 }
 
 function pontos(req, res) {
+    var fkUsuario = req.params.fkUsuario;
 
     // Passe os valores como parâmetro e vá para o arquivo quizModel.js
-    quizModel.pontos()
+    quizModel.pontos(fkUsuario)
     .then(
         function (resultado) {
             console.log(resultado)

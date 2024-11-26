@@ -9,7 +9,7 @@ router.post("/resultadoQuiz", function (req, res) {
     quizController.resultadoQuiz(req, res);
 });
 
-router.get("/pontos", function (req, res) {
+router.get("/pontos/:fkUsuario", function (req, res) {
     quizController.pontos(req, res);
 });
 
