@@ -21,7 +21,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), onloadEsconder(),exibirAquarios(), atualizacaoPeriodica()">
+<body onload="validarSessao(), onloadEsconder()">
 
     <div class="janela">
 
@@ -34,8 +34,8 @@
             </div>
 
             <div class="btn-nav-white">
-                <a href="../quizCavalos.html">
-                    <h3>Quiz na página WEB</h3>
+                <a href="./cards.html">
+                    <h3>Quiz</h3>
                 </a>
             </div>
 
@@ -218,7 +218,7 @@
     function onloadEsconder() {
         document.getElementById('pontuacao').style.display = "none"
         document.getElementById('jogo').style.display = "none"
-        document.getElementById('botaoVoltar').style.display = "none"
+        
     }
 
     function iniciarQuiz() {
@@ -226,7 +226,7 @@
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('btnIniciarQuiz').style.display = "none"
         document.getElementById('divIniciarQuiz').style.display = "none"
-        document.getElementById('botaoVoltar').style.display = "flex"
+       
 
         document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
 

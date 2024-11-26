@@ -50,7 +50,7 @@
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
                      -->
-          
+
           <div class="campo">
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
@@ -91,9 +91,6 @@
 
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
-
   function cadastrar() {
     // aguardar();
 
@@ -105,77 +102,59 @@
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
     var tamanho_nome = nomeVar.length;
-    var caracteres_especias_nome = nomeVar.includes('!') || nomeVar.includes('@') ||nomeVar.includes('#') ||nomeVar.includes('$') ||nomeVar.includes('%') ||nomeVar.includes('&') ||nomeVar.includes('*') ;
+    var caracteres_especiais = ['!', '@', '#', '$', '%', '&', '*'];
 
-    var caracteres_especias_senha = senhaVar.includes('!') || senhaVar.includes('@') ||senhaVar.includes('#') ||senhaVar.includes('$') ||senhaVar.includes('%') ||senhaVar.includes('&') ||senhaVar.includes('*');
-
-    var email_tem = emailVar.includes('@');
-    var termina_email = emailVar.endsWith('.com') || emailVar.endsWith('.com.br');
-    var tamanho_senha = senhaVar.length;
-
-    // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == ""
-    ) {
-      cardErro.style.display = "block";
-      alert('Erro! Todos os campos devem ser preenchidos!')
-
-      finalizarAguardar();
+    function possuiCaracteresEspeciais(string) {
+      for (var contador = 0; contador < caracteres_especiais.length; contador++) {
+        if (string.includes(caracteres_especiais[contador])) {
+          return true;
+        }
+      }
       return false;
     }
-    else if (tamanho_nome <= 2) {
-      cardErro.style.display = "block";
-      alert('Erro! O campo nome precisa de ao menos 3 letras!')
+    
 
+    if (nomeVar === "" || emailVar === "" || senhaVar === "" || confirmacaoSenhaVar === "") {
+      alert("Erro! Todos os campos devem ser preenchidos!");
       finalizarAguardar();
       return false;
-    }
-    else if (caracteres_especias_nome) {
-      cardErro.style.display = "block";
-      alert('Erro! O campo nome não deve possuir caracteres especias!')
 
+    } else if (tamanho_nome <= 2) {
+      alert("Erro! O campo nome precisa de ao menos 3 letras!");
       finalizarAguardar();
       return false;
-    }
-    else if ( email_tem == false) {
-      cardErro.style.display = "block";
-      alert('Erro! O campo e-mail deve possuir um "@"!')
 
+    } else if (possuiCaracteresEspeciais(nomeVar)) {
+      alert("Erro! O campo nome não deve possuir caracteres especiais!");
       finalizarAguardar();
       return false;
-    }
-    else if ( termina_email == false) {
-      cardErro.style.display = "block";
-      alert('Erro! O campo e-mail deve terminar com ".com" ou ".com.br"!')
 
+    } else if (!emailVar.includes('@')) {
+      alert("Erro! O campo e-mail deve possuir um '@'!");
       finalizarAguardar();
       return false;
-    }
-    else if (tamanho_senha <= 5) {
-      cardErro.style.display = "block";
-      alert('Erro! A senha deve conter ao menos 6 caracteres!')
 
+    } else if (!emailVar.endsWith('.com') && !emailVar.endsWith('.com.br')) {
+      alert("Erro! O campo e-mail deve terminar com '.com' ou '.com.br'!");
       finalizarAguardar();
       return false;
-    }
-    else if (caracteres_especias_senha == false) {
-      cardErro.style.display = "block";
-      alert('Erro! A senha deve conter ao menos 1 caractere especial!')
 
+    } else if (senhaVar.length <= 5) {
+      alert("Erro! A senha deve conter ao menos 6 caracteres!");
       finalizarAguardar();
       return false;
-    }
-    else if (senhaVar != confirmacaoSenhaVar) {
-      cardErro.style.display = "block";
-      alert('Erro! As senhas não coincidem!')
 
+    } else if (!possuiCaracteresEspeciais(senhaVar)) {
+      alert("Erro! A senha deve conter ao menos 1 caractere especial!");
       finalizarAguardar();
       return false;
-    }
-    else {
+
+    } else if (senhaVar !== confirmacaoSenhaVar) {
+      alert("Erro! As senhas não coincidem!");
+      finalizarAguardar();
+      return false;
+
+    } else {
       setInterval(sumirMensagem, 5000);
     }
 
@@ -216,7 +195,8 @@
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-          setTimeout(() => {''
+          setTimeout(() => {
+            ''
             window.location = "login.html";
           }, "2000");
 

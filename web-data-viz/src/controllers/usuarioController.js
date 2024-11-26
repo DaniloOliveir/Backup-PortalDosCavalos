@@ -105,8 +105,32 @@ function resultadoQuiz(req, res) {
 
 }
 
+function pontos(req, res) {
+
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.pontos()
+    .then(
+        function (resultado) {
+            console.log(resultado)
+            res.json(resultado);
+
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\n Erro QUIZ ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    resultadoQuiz
+    resultadoQuiz,
+    pontos
 }

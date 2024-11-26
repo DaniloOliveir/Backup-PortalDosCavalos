@@ -16,4 +16,8 @@ router.post("/resultadoQuiz", function (req, res) {
     usuarioController.resultadoQuiz(req, res);
 });
 
+router.get("/pontos", function (req, res) {
+    usuarioController.pontos(req, res);
+});
+
 module.exports = router;

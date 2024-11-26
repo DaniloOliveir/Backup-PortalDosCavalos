@@ -29,7 +29,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body>
+<body onload="obterDadosGrafico()">
 
     <div class="janela">
         <div class="header-left">
@@ -40,8 +40,8 @@
             </div>
 
             <div class="btn-nav-white">
-                <a href="../quizCavalos.html">
-                    <h3>Quiz NA PÁGINA WEB</h3>
+                <a href="./cards.html">
+                    <h3>Quiz</h3>
                 </a>
             </div>
 
@@ -72,6 +72,9 @@
                 <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
             </div>
             <div id="graficos">
+                <div class="graph">
+                    <canvas id="myChartCanvas"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -86,9 +89,9 @@
 
     let proximaAtualizacao;
 
-    window.onload = exibirAquariosDoUsuario();
+    // window.onload = exibirAquariosDoUsuario();
 
-    function exibirAquariosDoUsuario() {
+    function exibirAquarios() {
         var aquarios = JSON.parse(sessionStorage.AQUARIOS);
         aquarios.forEach(item => {
             document.getElementById("btnAquario").innerHTML += `
@@ -166,21 +169,21 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idAquario) {
+    function obterDadosGrafico() {
 
-        alterarTitulo(idAquario)
+        // alterarTitulo(idAquario)
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/usuarios/pontos/`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idAquario);
+                    plotarGrafico(resposta);
 
                 });
             } else {
@@ -195,7 +198,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idAquario) {
+    function plotarGrafico(resposta) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -228,9 +231,11 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
+
+            console.log(registro.acertos)
             labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
+            dados.datasets[0].data.push(registro.acertos);
+            dados.datasets[1].data.push(registro.erros);
         }
 
         console.log('----------------------------------------------')

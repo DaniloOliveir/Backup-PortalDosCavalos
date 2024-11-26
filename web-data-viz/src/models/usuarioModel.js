@@ -1,3 +1,4 @@
+// const { pontos } = require("../controllers/usuarioController");
 var database = require("../database/config")
 
 function autenticar(email, senha) {
@@ -32,8 +33,18 @@ function resultadoQuiz(fkUsuario, acertos, erros) {
     return database.executar(instrucaoSql);
 }
 
+function pontos() {
+    var instrucaoSql = `
+    select * from historicoQuiz;
+    `;
+
+    console.log('Estou na função pontos')
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    resultadoQuiz
+    resultadoQuiz,
+    pontos
 };
