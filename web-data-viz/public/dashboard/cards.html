@@ -34,6 +34,12 @@
             </div>
 
             <div class="btn-nav-white">
+                <a href="../index.html">
+                    <h3>Home</h3>
+                </a>
+            </div>
+            
+            <div class="btn-nav-white">
                 <a href="./cards.html">
                     <h3>Quiz</h3>
                 </a>
@@ -391,7 +397,7 @@
         btnTentarNovamente.disabled = false
 
 
-        fetch("/usuarios/resultadoQuiz", {
+        fetch("/quiz/resultadoQuiz", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -427,7 +433,7 @@
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
-                    console.error(texto);
+                    // console.error(texto);
                     // finalizarAguardar(texto);
                 });
             }

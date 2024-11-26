@@ -81,56 +81,7 @@ function cadastrar(req, res) {
     }
 }
 
-function resultadoQuiz(req, res) {
-    var fkUsuario = req.body.fkUsuarioServer;
-    var acertos = req.body.acertosServer;
-    var erros = req.body.errosServer;
-
-    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.resultadoQuiz(fkUsuario, acertos, erros)
-    .then(
-        function (resultado) {
-            res.json(resultado);
-        }
-    ).catch(
-        function (erro) {
-            console.log(erro);
-            console.log(
-                "\n Erro QUIZ ",
-                erro.sqlMessage
-            );
-            res.status(500).json(erro.sqlMessage);
-        }
-    );
-
-}
-
-function pontos(req, res) {
-
-    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.pontos()
-    .then(
-        function (resultado) {
-            console.log(resultado)
-            res.json(resultado);
-
-        }
-    ).catch(
-        function (erro) {
-            console.log(erro);
-            console.log(
-                "\n Erro QUIZ ",
-                erro.sqlMessage
-            );
-            res.status(500).json(erro.sqlMessage);
-        }
-    );
-
-}
-
 module.exports = {
     autenticar,
-    cadastrar,
-    resultadoQuiz,
-    pontos
+    cadastrar
 }

@@ -40,6 +40,12 @@
             </div>
 
             <div class="btn-nav-white">
+                <a href="../index.html">
+                    <h3>Home</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
                 <a href="./cards.html">
                     <h3>Quiz</h3>
                 </a>
@@ -91,34 +97,34 @@
 
     // window.onload = exibirAquariosDoUsuario();
 
-    function exibirAquarios() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        aquarios.forEach(item => {
-            document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-            `
+    // function exibirAquarios() {
+    //     var aquarios = JSON.parse(sessionStorage.AQUARIOS);
+    //     aquarios.forEach(item => {
+    //         document.getElementById("btnAquario").innerHTML += `
+    //         <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
+    //         `
 
-            document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
+    //         document.getElementById("graficos").innerHTML += `
+    //             <div id="grafico${item.id}" class="display-none">
+    //                 <h3 class="tituloGraficos">
+    //                     <span id="tituloAquario${item.id}">${item.descricao}</span>
+    //                 </h3>
+    //                 <div class="graph">
+    //                     <canvas id="myChartCanvas${item.id}"></canvas>
+    //                 </div>
+    //                 <div class="label-captura">
+    //                     <p id="avisoCaptura${item.id}" style="color: white"></p>
+    //                 </div>
+    //             </div>
+    //         `
 
-            obterDadosGrafico(item.id)
-        });
+    //         obterDadosGrafico(item.id)
+    //     });
 
-        if (aquarios.length > 0) {
-            exibirAquario(aquarios[0].id)
-        }
-    }
+    //     if (aquarios.length > 0) {
+    //         exibirAquario(aquarios[0].id)
+    //     }
+    // }
 
     function alterarTitulo(idAquario) {
         var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
@@ -177,7 +183,12 @@
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/usuarios/pontos/`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/quiz/pontos/`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -209,20 +220,21 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Umidade',
+                label: 'Acertos',
                 data: [],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+                backgroundColor: 'rgb(75, 192, 192)',
+                borderColor: 'rgb(75, 192, 192)',     // Cor da borda das barras
+                borderWidth: 1                         // Largura da borda
             },
             {
-                label: 'Temperatura',
+                label: 'Erros',
                 data: [],
-                fill: false,
+                backgroundColor: 'rgb(199, 52, 52)',
                 borderColor: 'rgb(199, 52, 52)',
-                tension: 0.1
+                borderWidth: 1
             }]
         };
+
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
@@ -233,32 +245,40 @@
             var registro = resposta[i];
 
             console.log(registro.acertos)
-            labels.push(registro.momento_grafico);
+            labels.push(registro.dtJogo);
             dados.datasets[0].data.push(registro.acertos);
             dados.datasets[1].data.push(registro.erros);
         }
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
+        
 
         // Criando estrutura para plotar gráfico - config
         const config = {
-            type: 'line',
+            type: 'bar',
             data: dados,
+            options: {
+                plugins: {
+                    title: {
+                        display: true, // Exibe o título
+                        text: 'Meus acertos e erros - Quiz Curiosidades', // O texto do título
+                        font: {
+                            size: 20, // Tamanho da fonte
+                            weight: 'bold' // Peso da fonte (opcional)
+                        },
+                        color: '#333' // Cor do título (opcional)
+                    }
+                }
+            }
         };
+
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idAquario}`),
+            document.getElementById('myChartCanvas'),
             config
         );
 
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
     }
 
 
