@@ -11,7 +11,7 @@
   • Banco de Dados em uma VM lubuntu <br>
 
 
-# 🛠️ Ferramentas e recursos utilizados
+# Ferramentas e recursos utilizados
   • Ferramentas: Visual Code, MySql Workbench e Node.Js <br>
   • Ferramentas de Gestão: Trello e Backlog <br>
   • Linguagens: HTML, CSS e JavaScript <br>
