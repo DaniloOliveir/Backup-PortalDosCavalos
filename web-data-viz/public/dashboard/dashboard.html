@@ -29,7 +29,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="obterDadosGrafico()">
+<body onload="obterDadosGrafico(), atualizarFeed(), atualizarFeed2()">
 
     <div class="janela">
         <div class="header-left">
@@ -72,6 +72,14 @@
 
         <div class="dash">
         
+            <div>
+                <div id="feed_container" class="feed-container">
+            </div>
+
+            <div>
+                <div id="feed_container2" class="feed-container2">
+            </div>
+
             <div id="graficos">
                 <div class="graph">
                     <canvas id="myChartCanvas"></canvas>
@@ -336,4 +344,100 @@
     //         });
 
     // }
+
+
+
+    // ESTOU UTILIZANDO ESSA FUNÇÃO 'ATUALIZAR FEED()' PARA COLOCAR A KPI
+    function atualizarFeed() {
+        fetch("/kpi1/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                        
+
+                        spanID.innerHTML = "Número de Acertos: <b>" + publicacao.soma + "</b>";
+                       
+                        spanID.className = 'publicacao'
+                        divPublicacao.className = "class";
+                        
+
+
+                        divPublicacao.appendChild(spanID);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+
+    function atualizarFeed2() {
+        fetch("/kpi2/listarMIN").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container2");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container2");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                        
+
+                        spanID.innerHTML = "Número de Erros: <b>" + publicacao.menor + "</b>";
+                       
+                        spanID.className = 'publicacao'
+                        divPublicacao.className = "class";
+                        
+
+
+                        divPublicacao.appendChild(spanID);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+
 </script>

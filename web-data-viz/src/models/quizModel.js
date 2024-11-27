@@ -11,7 +11,6 @@ function resultadoQuiz(fkUsuario, acertos, erros) {
 }
 
 function pontos(fkUsuario) {
-
     
     var instrucaoSql = `
    select * from historicoQuiz

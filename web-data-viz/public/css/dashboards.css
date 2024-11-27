@@ -53,7 +53,7 @@ body {
 
 .dash-right .avisos .div-form textarea {
   width: 95%;
-  border: 3px solid #e6005a;
+  /* border: 3px solid #e6005a; */
   background-color: white;
   border-radius: 5px;
 }
@@ -67,7 +67,7 @@ body {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #e6005a;
+  /* background-color: #e6005a; */
   width: 120px;
 }
 
@@ -80,26 +80,25 @@ body {
   font-size: 14px;
   padding: 5px 8px;
   color: white;
-  background-color: #e6005a;
+  /* background-color: #e6005a; */
   width: 80px;
 }
 
-.publicacao {
+/* .publicacao {
   display: flex;
   flex-wrap: wrap;
   align-content: stretch;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 3px solid #e6005a;
   padding: 20px;
-}
+} */
 
 .publicacao>*:not(:last-child) {
   padding: 0 0 10px 0;
 }
 
-.div-results {
+/* .div-results {
   width: 100%;
 }
 
@@ -107,7 +106,7 @@ body {
   background-color: red;
   border-radius: 5px;
   margin-bottom: 80px;
-}
+} */
 
 .div-buttons {
   display: flex;
@@ -120,9 +119,9 @@ body {
 
 /* pagina graficos */
 
-.dash-header {
+/* .dash-header {
   background-color: red;
-}
+} */
 
 .dash {
   width: 80%;
@@ -134,15 +133,14 @@ body {
   overflow: auto;
 }
 
-.area-parametros-alerta {
-  /* border: 2px solid pink; */
+/* .area-parametros-alerta {
   display: flex;
   flex-direction: column;
   width: 70%;
   margin: auto;
   margin-top: 10px;
   background-color: red;
-}
+} */
 
 .area-parametros-alerta .titulo-legenda {
   color: white;
@@ -215,7 +213,7 @@ body {
   /* text-align: center; */
   height: 180px;
   /* justify-content: right; */
-  background-color: red;
+  /* background-color: red; */
   font-size: 20px;
 }
 
@@ -281,6 +279,7 @@ body {
   width: 70%;
   margin: auto;
   padding-top: 10px;
+  margin-top: 200px;
 }
 
 .tituloGraficos {
@@ -559,7 +558,7 @@ button:hover:not(:disabled) {
 
 .text-danger-with-bg {
   color: white;
-  background-color: #FF6347;
+  /* background-color: #FF6347; */
   padding: 2px 6px;
   border-radius: 3px;
   font-weight: bold;
@@ -583,3 +582,34 @@ button:hover:not(:disabled) {
   display: inline-block;
   width: fit-content;
 }
+
+.feed-container{
+  position: absolute;
+  top: 5%;
+  left: 15%;
+  width: 200px;
+  height: 80px;
+  background-color: green;
+  color: black;
+  border-radius: 5px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.feed-container2{
+  position: absolute;
+  top: 5%;
+  left: 55%;
+  width: 200px;
+  height: 80px;
+  background-color: yellow;
+  color: black;
+  border-radius: 5px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
