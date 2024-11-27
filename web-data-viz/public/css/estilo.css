@@ -89,6 +89,20 @@ body {
   text-decoration: underline;
 }
 
+.perfil a {
+  background-color: var(--cor-principal); /* Mantém o fundo azul */
+  padding: 10px;
+  border-radius: 5px;
+  color: white; /* Cor do texto inicial */
+  text-decoration: none;
+}
+
+.perfil a:hover {
+  color: white; /* Mantém a cor do texto igual ao estado normal */
+  text-decoration: none; /* Remove o sublinhado */
+  background-color: var(--cor-principal); /* Mantém o fundo azul */
+}
+
 /* BANNER */
 
 .banner {

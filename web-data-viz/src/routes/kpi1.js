@@ -3,7 +3,7 @@ var router = express.Router();
 
 var kpi1Controller = require("../controllers/kpi1Controller");
 
-router.get("/listar", function (req, res) {
+router.get("/listar/:fkUsuario", function (req, res) {
     kpi1Controller.listar(req, res);
 });
 

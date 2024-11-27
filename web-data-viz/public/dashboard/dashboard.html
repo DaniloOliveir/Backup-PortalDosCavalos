@@ -247,7 +247,7 @@
             var registro = resposta[i];
 
             console.log(registro.acertos)
-            labels.push(registro.dtJogo.substr(0,10));
+            labels.push(registro.data_da_Jogada);
             dados.datasets[0].data.push(registro.acertos);
             dados.datasets[1].data.push(registro.erros);
         }
@@ -349,7 +349,7 @@
 
     // ESTOU UTILIZANDO ESSA FUNÇÃO 'ATUALIZAR FEED()' PARA COLOCAR A KPI
     function atualizarFeed() {
-        fetch("/kpi1/listar").then(function (resposta) {
+        fetch(`/kpi1/listar/${sessionStorage.ID_USUARIO}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
@@ -372,7 +372,7 @@
                         var spanID = document.createElement("span");
                         
 
-                        spanID.innerHTML = "Número de Acertos: <b>" + publicacao.soma + "</b>";
+                        spanID.innerHTML = "Porcentagem de Acertos: <b>" + publicacao.porcentagem_acertos + '%' + "</b>";
                        
                         spanID.className = 'publicacao'
                         divPublicacao.className = "class";
@@ -395,7 +395,7 @@
     }
 
     function atualizarFeed2() {
-        fetch("/kpi2/listarMIN").then(function (resposta) {
+        fetch(`/kpi2/listarMIN/${sessionStorage.ID_USUARIO}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container2");
@@ -418,7 +418,7 @@
                         var spanID = document.createElement("span");
                         
 
-                        spanID.innerHTML = "Número de Erros: <b>" + publicacao.menor + "</b>";
+                        spanID.innerHTML = "Porcentagem de erros <b>" + publicacao.porcentagem_erros + '%' +"</b>";
                        
                         spanID.className = 'publicacao'
                         divPublicacao.className = "class";

@@ -13,8 +13,11 @@ function resultadoQuiz(fkUsuario, acertos, erros) {
 function pontos(fkUsuario) {
     
     var instrucaoSql = `
-   select * from historicoQuiz
-    where fkUsuario = ${fkUsuario};
+   select acertos, erros,
+	date_format(dtJogo, '%d/%m/%y') as 'data_da_Jogada'
+    from historicoQuiz
+    where fkUsuario = ${fkUsuario}
+    order by dtJogo desc;
     `;
 
     console.log('Estou na função pontos')
